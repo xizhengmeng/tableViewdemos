@@ -74,7 +74,7 @@
     
     return shuzuModal.info.count;
 }
-
+//通知控制器，我已经切换了选中的那个indexpath了
 - (void)changeSelectedIndexPath:(NSIndexPath *)indexpath withInsertArr:(NSMutableArray *)insertArr{
     self.selectedIndexpath = indexpath;
     self.insertArr = insertArr;
@@ -82,6 +82,7 @@
     count = 0;
 }
 
+//通知控制器，我已经切换了取数据的index了，因为大数组是不变的，所以选中的那个cell的index和我要取数据的那个index可能是不一样的
 - (void)changeArrIndexPath:(NSIndexPath *)indexPath {
     self.arrIndexPath = indexPath;
 }
@@ -110,7 +111,6 @@ NSInteger count = 0;
             
             cell.textLabel.text = arr[count];
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
-            NSLog(@"+++%@,%ld", arr[count], count);
             count ++;
             //这里会有一个bug，就是，当你点开了cell，但是并没有完全显示，这个时候，就回错误，所以要在且混啊selectedcell的时候将这个变量再次变为零
             if (count == arr.count) {
